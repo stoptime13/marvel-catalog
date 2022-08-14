@@ -1,0 +1,40 @@
+@import '../../style/variables.scss';
+
+.app {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 37px;
+        span {
+            color: $main-color;
+            font-family: 'Marvel', regular;
+            font-size: 48px;
+        }
+        a{
+            font-family: 'Marvel', regular;
+            font-size: 48px;
+        }
+    }
+    &__menu {
+        ul {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 400;
+            line-height: 32px;
+            font-size: 30px;
+            li {
+                a{
+                    font-family: 'Marvel', regular;
+                }
+                margin: 0 8px;
+                a:hover {
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}
