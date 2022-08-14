@@ -7,6 +7,7 @@
         position: relative;
         z-index: 5;
         background-color: #fff;
+        border-radius: 10px;
         &-name {
             font-weight: 400;
             font-family: "Marvel", regular;
@@ -26,6 +27,7 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
+            border-radius: 10px;
         }
     }
     &__btns {
