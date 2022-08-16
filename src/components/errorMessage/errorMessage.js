@@ -1,5 +1,3 @@
-import img from './error.gif'
-
 const ErrorMessage = () => {
     return(
         <h3 style={{
