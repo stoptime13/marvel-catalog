@@ -1,4 +1,5 @@
 import {Component} from "react";
+import PropTypes from 'prop-types';
 
 import MarvelService from "../../services/MarvelService";
 
@@ -118,6 +119,10 @@ const CharItem = (props) => {
             <div className="char__name">{name}</div>
         </li>
     )
+}
+
+CharList.propTypes = {
+    onCharSelected: PropTypes.func.isRequired
 }
 
 export default CharList;
