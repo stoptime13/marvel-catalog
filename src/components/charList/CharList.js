@@ -59,12 +59,38 @@ class CharList extends Component {
         })
     }
 
+    itemRefs = [];
+
+    setRef = (ref) => {
+        this.itemRefs.push(ref);
+    }
+
+    focusOnChar = (id) => {
+        this.itemRefs.forEach(item => item.classList.remove('char__item_selected'));
+        this.itemRefs[id].classList.add('char__item_selected');
+        this.itemRefs[id].focus();
+    }
+
     renderItems(arr) {
-        const items = arr.map((item) => {
+        const items = arr.map((item, i) => {
+            let style = {objectFit: 'cover'};
+            if(item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'){
+                style = {
+                    objectFit: 'unset'
+                }
+            }
             return (
-                <CharItem char={item}
-                          key={item.id}
-                          onCharSelected={() => this.props.onCharSelected(item.id)}/>
+                <li
+                    className="char__item"
+                    ref={this.setRef}
+                    key={item.id}
+                    onClick={() => {
+                        this.props.onCharSelected(item.id);
+                        this.focusOnChar(i);
+                    }}>
+                    <img src={item.thumbnail} alt="char_img" style={style}/>
+                    <div className="char__name">{item.name}</div>
+                </li>
             )
         });
 
@@ -99,26 +125,6 @@ class CharList extends Component {
             </div>
         )
     }
-}
-
-const CharItem = (props) => {
-
-    const {name, thumbnail} = props.char;
-    const{onCharSelected} = props;
-
-    let style = {objectFit: 'cover'};
-    if(thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'){
-        style = {
-            objectFit: 'unset'
-        }
-    }
-
-    return(
-        <li className="char__item" onClick={onCharSelected}>
-            <img src={thumbnail} alt="char_img" style={style}/>
-            <div className="char__name">{name}</div>
-        </li>
-    )
 }
 
 CharList.propTypes = {
