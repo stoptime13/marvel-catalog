@@ -1,5 +1,10 @@
 @import '../../style/variables.scss';
 
+@font-face {
+    font-family: "BentonSans Comp Black";
+    src: url("../../../fonts/BentonSans-Comp-Black-Regular.otf")
+}
+
 .randomchar {
     display: grid;
     grid-template-columns: repeat(2, 50%);
@@ -26,7 +31,7 @@
     }
     &__name {
         font-weight: 400;
-        font-family: "Marvel", regular;
+        font-family: "BentonSans Comp Black";
         font-size: 26px;
         line-height: 29px;
         text-transform: uppercase;
@@ -42,7 +47,7 @@
         a{
             div{
                 font-weight: 400;
-                font-family: "Marvel", regular;
+                font-family: "BentonSans Comp Black";
                 font-size: 20px;
 
             }
@@ -57,7 +62,7 @@
         button {
             div{
                 font-weight: 400;
-                font-family: "Marvel", regular;
+                font-family: "BentonSans Comp Black";
                 font-size: 20px;
             }
             margin-top: 15px;

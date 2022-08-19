@@ -1,9 +1,11 @@
 @import './variables';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 @import './button';
+@import url('https://fonts.cdnfonts.com/css/marvel');
+
 
 * {
-    font-family: "DniproCity", regular;
+    font-family: "Marvel", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
