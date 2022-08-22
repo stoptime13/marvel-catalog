@@ -29,7 +29,6 @@ const App = () => {
                     <ErrorBoundary>
                         <CharInfo selectChar={selectedChar}/>
                     </ErrorBoundary>
-
                 </div>
                 <img className="bg-decoration" src={decoration} alt="vision"/>
             </main>
