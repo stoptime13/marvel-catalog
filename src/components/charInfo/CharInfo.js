@@ -1,10 +1,12 @@
 import {useState, useEffect} from "react";
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/errorMessage";
-import Skeleton from "../skeleton/Skeleton";
 import useMarvelService from "../../services/MarvelService";
+import Skeleton from "../skeleton/Skeleton";
+
 
 import './charInfo.scss';
 
@@ -91,8 +93,11 @@ const View = ({char}) => {
                     newArr.map((item, i) => {
                         return(
                             <li key={i} className="char__comics-item">
+                                <Link to={`/comics/${item.resourceURI.slice(43, 48)}`}>
                                 {item.name}
+                                </Link>
                             </li>
+
                         )
                     })
                 }
