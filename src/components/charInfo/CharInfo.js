@@ -90,10 +90,11 @@ const View = ({char}) => {
             <div className="char__comics">Comics:</div>
             <ul className="char__comics-list">
                 {
+
                     newArr.map((item, i) => {
                         return(
                             <li key={i} className="char__comics-item">
-                                <Link to={`/comics/${item.resourceURI.slice(43, 48)}`}>
+                                <Link to={comics.length ? `/comics/${item.resourceURI.slice(43, 48)}` : '#'}>
                                 {item.name}
                                 </Link>
                             </li>

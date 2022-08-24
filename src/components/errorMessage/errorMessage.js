@@ -6,7 +6,7 @@ const ErrorMessage = () => {
                 height: '40px',
                 objectFit: 'contain',
                 margin: '0 auto',
-                fontFamily: 'Marvel regular',
+                fontFamily: "BentonSans Comp Black",
                 fontSize: '40px',
                 fontWeight: '400'
             }
