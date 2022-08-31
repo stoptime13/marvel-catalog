@@ -10,6 +10,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-family: "BentonSans Comp Black";
     &__long {
         display: block;
         width: 170px;
@@ -53,6 +54,8 @@
     &__secondary {
         .inner {
             background-color: $grey;
+            font-family: "BentonSans Comp Black";
+            font-size: 20px;
             &::before {
                 border-color: $grey transparent;
                 transition: none;

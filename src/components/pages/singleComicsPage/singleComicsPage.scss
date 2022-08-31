@@ -1,4 +1,4 @@
-@import '../../style/variables';
+@import '../../../style/variables.scss';
 
 .single-comic {
     margin-top: 50px;
@@ -12,9 +12,8 @@
         border-radius: 10px;
     }
     &__name {
-        font-family: "BentonSans Comp Black";
         font-weight: bold;
-        font-size: 27px;
+        font-size: 22px;
         line-height: 29px;
     }
     &__descr {
