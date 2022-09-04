@@ -3,10 +3,27 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 import useMarvelService from "../../services/MarvelService";
+import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/errorMessage";
+
 
 import './charList.scss';
-import ErrorMessage from "../errorMessage/errorMessage";
-import Spinner from "../spinner/Spinner";
+
+function setContent(process, Component, newItemLoading) {
+    switch (process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            throw new Error('Unexpected process state');
+    }
+}
+
 
 const CharList = (props) => {
     const [charArr, setCharArr] = useState([]);
@@ -14,7 +31,7 @@ const CharList = (props) => {
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
 
-    const {loading, error, getAllCharacters} = useMarvelService();
+    const {getAllCharacters, process, setProcess} = useMarvelService();
 
     const duration = 500;
 
@@ -24,7 +41,7 @@ const CharList = (props) => {
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true );
-        getAllCharacters(offset).then(onCharListLoaded);
+        getAllCharacters(offset).then(onCharListLoaded).then(() => setProcess('confirmed'));
     }
 
     const onCharListLoaded = (newCharArr) => {
@@ -62,8 +79,9 @@ const CharList = (props) => {
                         ref={el => itemRefs.current[i] = el}
                         key={item.id}
                         onClick={() => {
-                            props.onCharSelected(item.id);
                             focusOnChar(i);
+                            props.onCharSelected(item.id);
+
                         }}
                         onKeyPress={(e) => {
                             if (e.key === ' ' || e.key === "Enter") {
@@ -87,15 +105,9 @@ const CharList = (props) => {
         )
     }
 
-    const items = renderItems(charArr);
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemLoading ? <Spinner/> : null;
-
     return (
         <div className="char__list">
-            {errorMessage}
-            {spinner}
-            {items}
+            {setContent(process, () => renderItems(charArr), newItemLoading)}
             <button
                 className="button button__main button__long"
                 disabled={newItemLoading}
